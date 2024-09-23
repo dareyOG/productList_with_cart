@@ -2,6 +2,7 @@ import { useReducer, useEffect } from 'react';
 import Dessert from './Dessert';
 import DessertList from './DessertList';
 import Cart from './Cart';
+import OrderModal from './OrderModal';
 
 const initialState = {
   desserts: [],
@@ -63,13 +64,21 @@ function reducer(state, action) {
     case 'confirm_order':
       return { ...state, isModalActive: true };
 
+    case 'clear_cart':
+      return {
+        ...state,
+        cartList: [],
+        status: 'received',
+        isModalActive: false,
+      };
+
     default:
       throw new Error('unknown action');
   }
 }
 
 function App() {
-  const [{ desserts, cartList }, dispatch] = useReducer(reducer, initialState);
+  const [{ desserts, cartList, isModalActive }, dispatch] = useReducer(reducer, initialState);
 
   useEffect(function () {
     async function getDessert() {
@@ -81,12 +90,15 @@ function App() {
   }, []);
 
   return (
-    <Dessert>
-      <section>
-        <DessertList desserts={desserts} cartList={cartList} dispatch={dispatch} />
-      </section>
-      <Cart cartList={cartList} dispatch={dispatch} />
-    </Dessert>
+    <>
+      <Dessert>
+        <section>
+          <DessertList desserts={desserts} cartList={cartList} dispatch={dispatch} />
+        </section>
+        <Cart cartList={cartList} dispatch={dispatch} />
+      </Dessert>
+      {isModalActive && <OrderModal cartList={cartList} dispatch={dispatch} />}
+    </>
   );
 }
 
