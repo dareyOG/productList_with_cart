@@ -7,7 +7,7 @@ function DessertList({ desserts, dispatch, cartList, formatCurrency }) {
         Desserts
       </header>
       <main>
-        <ul className="tablets:grid-cols-2 desktops:grid-cols-3 grid gap-5">
+        <ul className="tablets:grid-cols-2 desktops:grid-cols-3 grid gap-[1.5rem]">
           {desserts.map((dessert) => (
             <DessertItem
               dessert={dessert}
