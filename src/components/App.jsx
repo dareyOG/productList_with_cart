@@ -1,4 +1,6 @@
 import { useReducer, useEffect } from 'react';
+import Dessert from './Dessert';
+import DessertList from './DessertList';
 
 const initialState = {
   desserts: [],
@@ -17,7 +19,7 @@ function reducer(state, action) {
 }
 
 function App() {
-  const [{ desserts }, dispatch] = useReducer(reducer, initialState);
+  const [{ desserts, cartList }, dispatch] = useReducer(reducer, initialState);
 
   useEffect(function () {
     async function getDessert() {
@@ -28,9 +30,13 @@ function App() {
     getDessert();
   }, []);
 
-  console.log(desserts);
-
-  return;
+  return (
+    <Dessert>
+      <section>
+        <DessertList desserts={desserts} cartList={cartList} dispatch={dispatch} />
+      </section>
+    </Dessert>
+  );
 }
 
 export default App;
