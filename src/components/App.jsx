@@ -13,6 +13,12 @@ function reducer(state, action) {
     case 'render_desserts':
       return { ...state, desserts: action.payload };
 
+    case 'add_dessert':
+      return {
+        ...state,
+        cartList: [...state.cartList, action.payload],
+      };
+
     default:
       throw new Error('unknown action');
   }

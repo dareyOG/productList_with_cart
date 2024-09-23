@@ -1,5 +1,11 @@
 import AddToCart from './AddToCart';
+import DessertCounter from './DessertCounter';
 function DessertItem({ dessert, cartList, dispatch }) {
+  // check_if_product_is_in_cart
+  const isIncludedInCart = cartList
+    .map((cartItem) => cartItem?.name.toLowerCase())
+    .includes(dessert?.name.toLowerCase());
+
   return (
     <li className="relative flex list-none flex-col">
       <picture>
@@ -13,7 +19,16 @@ function DessertItem({ dessert, cartList, dispatch }) {
           desktops:h-[15rem] tablets:object-cover object-contain tablets:h-[13rem] w-full cursor-pointer rounded-[0.7rem] border-transparent"
         />
       </picture>
-      <AddToCart dessert={dessert} dispatch={dispatch} />
+      {!isIncludedInCart ? (
+        <AddToCart dessert={dessert} dispatch={dispatch} />
+      ) : (
+        <DessertCounter
+          dessert={dessert}
+          cartList={cartList}
+          dispatch={dispatch}
+          isIncludedInCart={isIncludedInCart}
+        />
+      )}
 
       <div role="main" className="font-semibold flex w-fit flex-col text-[1.1rem]">
         <h2 className="font-normal text-rose-400">{dessert.category}</h2>
