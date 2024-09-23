@@ -1,6 +1,7 @@
 import { useReducer, useEffect } from 'react';
 import Dessert from './Dessert';
 import DessertList from './DessertList';
+import Cart from './Cart';
 
 const initialState = {
   desserts: [],
@@ -59,6 +60,9 @@ function reducer(state, action) {
       return { ...state, cartList: updatedCart };
     }
 
+    case 'confirm_order':
+      return { ...state, isModalActive: true };
+
     default:
       throw new Error('unknown action');
   }
@@ -81,6 +85,7 @@ function App() {
       <section>
         <DessertList desserts={desserts} cartList={cartList} dispatch={dispatch} />
       </section>
+      <Cart cartList={cartList} dispatch={dispatch} />
     </Dessert>
   );
 }
