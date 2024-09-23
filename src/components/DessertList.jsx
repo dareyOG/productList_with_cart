@@ -1,6 +1,6 @@
 import DessertItem from './DessertItem';
 
-function DessertList({ desserts, dispatch, cartList }) {
+function DessertList({ desserts, dispatch, cartList, formatCurrency }) {
   return (
     <section>
       <header className="tablets:text-[3rem] mb-[1rem] w-fit text-[2rem] font-bold text-rose-900">
@@ -13,6 +13,7 @@ function DessertList({ desserts, dispatch, cartList }) {
               dessert={dessert}
               cartList={cartList}
               dispatch={dispatch}
+              formatCurrency={formatCurrency}
               key={dessert.name}
             />
           ))}

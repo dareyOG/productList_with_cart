@@ -89,15 +89,35 @@ function App() {
     getDessert();
   }, []);
 
+  // format currency
+  const formatCurrency = amount =>
+    amount.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+    });
+
   return (
     <>
       <Dessert>
         <section>
-          <DessertList desserts={desserts} cartList={cartList} dispatch={dispatch} />
+        <DessertList
+              desserts={desserts}
+              cartList={cartList}
+              dispatch={dispatch}
+              formatCurrency={formatCurrency}
+            />
         </section>
-        <Cart cartList={cartList} dispatch={dispatch} />
+         <Cart
+            cartList={cartList}
+            dispatch={dispatch}
+            formatCurrency={formatCurrency}
+          />
       </Dessert>
-      {isModalActive && <OrderModal cartList={cartList} dispatch={dispatch} />}
+      {isModalActive && <OrderModal
+          cartList={cartList}
+          dispatch={dispatch}
+          formatCurrency={formatCurrency}
+        />}
     </>
   );
 }

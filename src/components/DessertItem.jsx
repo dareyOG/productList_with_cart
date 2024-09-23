@@ -1,6 +1,6 @@
 import AddToCart from './AddToCart';
 import DessertCounter from './DessertCounter';
-function DessertItem({ dessert, cartList, dispatch }) {
+function DessertItem({ dessert, cartList, dispatch,formatCurrency }) {
   // check_if_product_is_in_cart
   const isIncludedInCart = cartList
     .map((cartItem) => cartItem?.name.toLowerCase())
@@ -33,7 +33,7 @@ function DessertItem({ dessert, cartList, dispatch }) {
       <div role="main" className="font-semibold flex w-fit flex-col text-[1.1rem]">
         <h2 className="font-normal text-rose-400">{dessert.category}</h2>
         <p className="text-rose-900">{dessert.name}</p>
-        <p className="text-red">{dessert.price}</p>
+        <p className="text-red">{formatCurrency(dessert.price)}</p>
       </div>
     </li>
   );

@@ -2,7 +2,7 @@ import EmptyCart from './EmptyCart';
 import FilledCart from './FilledCart';
 import ConfirmOrder from './ConfirmOrder';
 
-function Cart({ cartList, dispatch }) {
+function Cart({ cartList, dispatch, formatCurrency }) {
   // number of cart Items
   const numcartItems = cartList
     .map((cartItem) => cartItem.quantity)
@@ -16,8 +16,16 @@ function Cart({ cartList, dispatch }) {
       <h1 className="pb-2 text-2xl font-bold text-red">Your Cart ({numcartItems})</h1>
       {cartList.length ? (
         <>
-          <FilledCart cartList={cartList} dispatch={dispatch} />
-          <ConfirmOrder cartList={cartList} dispatch={dispatch} />
+           <FilledCart
+            cartList={cartList}
+            dispatch={dispatch}
+            formatCurrency={formatCurrency}
+          />
+          <ConfirmOrder
+            cartList={cartList}
+            dispatch={dispatch}
+            formatCurrency={formatCurrency}
+          />
         </>
       ) : (
         <EmptyCart />

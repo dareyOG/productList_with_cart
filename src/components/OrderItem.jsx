@@ -1,4 +1,4 @@
-function OrderItem({ orderItem }) {
+function OrderItem({ orderItem,formatCurrency }) {
   const { name, thumbnail, unitPrice, quantity } = orderItem;
 
   return (
@@ -8,10 +8,10 @@ function OrderItem({ orderItem }) {
         <p className="font-semibold truncate text-rose-900">{name}</p>
         <div className="flex gap-2">
           <span className="text-red">{quantity}x</span>
-          <span className="text-rose-400">@{unitPrice}</span>
+          <span className="text-rose-400">@{formatCurrency(unitPrice)}</span>
         </div>
       </div>
-      <div className="font-semibold flex justify-end text-[1rem]">{unitPrice * quantity}</div>
+      <div className="font-semibold flex justify-end text-[1rem]">{formatCurrency(unitPrice * quantity)}</div>
     </li>
   );
 }

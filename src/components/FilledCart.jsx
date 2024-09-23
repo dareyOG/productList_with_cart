@@ -1,10 +1,10 @@
 import CartItem from './CartItem';
 
-function FilledCart({ cartList, dispatch }) {
+function FilledCart({ cartList, dispatch,formatCurrency }) {
   return (
     <ul>
       {cartList.map((cartItem) => (
-        <CartItem cartItem={cartItem} dispatch={dispatch} key={cartItem.name} />
+        <CartItem cartItem={cartItem} dispatch={dispatch} formatCurrency={formatCurrency} key={cartItem.name} />
       ))}
     </ul>
   );

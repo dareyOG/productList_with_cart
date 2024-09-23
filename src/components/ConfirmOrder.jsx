@@ -1,4 +1,4 @@
-function ConfirmOrder({ cartList, dispatch }) {
+function ConfirmOrder({ cartList, dispatch,formatCurrency }) {
   // total_dessert_order
   const totalOrder = cartList
     .map((cart) => (cart.totalPrice ? cart.totalPrice : cart.unitPrice))
@@ -7,7 +7,7 @@ function ConfirmOrder({ cartList, dispatch }) {
     <>
       <div className="tablets:text-[1.2rem] desktops:text-[1.5rem] my-6 flex items-center justify-between text-[0.85rem]">
         <p className="font-semibold text-rose-900">Order Total</p>
-        <p className="font-bold">{totalOrder}</p>
+        <p className="font-bold">{formatCurrency(totalOrder)}</p>
       </div>
       <div
         role="footer"

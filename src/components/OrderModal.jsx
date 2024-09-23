@@ -1,6 +1,6 @@
 import OrderItem from './OrderItem';
 
-function OrderModal({ cartList, dispatch }) {
+function OrderModal({ cartList, dispatch,formatCurrency }) {
   // orderList
   const orderList = cartList.slice();
   return (
@@ -17,7 +17,7 @@ function OrderModal({ cartList, dispatch }) {
           <p className="pb-[1.5rem] text-[1rem] text-rose-400">We hope you enjoy your food!</p>
           <ul className="rounded-[.5rem] bg-rose-400/10 p-4">
             {orderList.map((orderItem) => (
-              <OrderItem orderItem={orderItem} key={orderItem.name} />
+              <OrderItem orderItem={orderItem} formatCurrency={formatCurrency} key={orderItem.name} />
             ))}
           </ul>
           <button
