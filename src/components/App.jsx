@@ -88,13 +88,18 @@ function App() {
     }
     getDessert();
   }, []);
+  
+// total_dessert_order
+const totalOrder = cartList
+.map((cart) => (cart.totalPrice ? cart.totalPrice : cart.unitPrice))
+.reduce((acc, currPrice) => acc + currPrice, 0);
 
-  // format currency
-  const formatCurrency = amount =>
-    amount.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD",
-    });
+// format currency
+const formatCurrency = amount =>
+  amount.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
   return (
     <>
@@ -110,12 +115,14 @@ function App() {
          <Cart
             cartList={cartList}
             dispatch={dispatch}
+            totalOrder={totalOrder}
             formatCurrency={formatCurrency}
           />
       </Dessert>
       {isModalActive && <OrderModal
           cartList={cartList}
           dispatch={dispatch}
+          totalOrder={totalOrder}
           formatCurrency={formatCurrency}
         />}
     </>

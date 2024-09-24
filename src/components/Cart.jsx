@@ -2,11 +2,12 @@ import EmptyCart from './EmptyCart';
 import FilledCart from './FilledCart';
 import ConfirmOrder from './ConfirmOrder';
 
-function Cart({ cartList, dispatch, formatCurrency }) {
+function Cart({ cartList, dispatch, totalOrder, formatCurrency }) {
   // number of cart Items
   const numcartItems = cartList
     .map((cartItem) => cartItem.quantity)
     .reduce((acc, currQty) => acc + currQty, 0);
+
 
   return (
     <aside
@@ -24,6 +25,7 @@ function Cart({ cartList, dispatch, formatCurrency }) {
           <ConfirmOrder
             cartList={cartList}
             dispatch={dispatch}
+            totalOrder={totalOrder}
             formatCurrency={formatCurrency}
           />
         </>
