@@ -1,9 +1,10 @@
+import { useDessert } from "../context/DessertContext";
 import OrderTotal from "./OrderTotal";
-function ConfirmOrder({  dispatch, totalOrder, formatCurrency }) {
-  
+function ConfirmOrder() {
+  const {  dispatch }=useDessert()
   return (
     <>
-     <OrderTotal totalOrder={totalOrder} formatCurrency={formatCurrency}/>
+     <OrderTotal/>
       <div
         role="footer"
         className="font-semibold tablets:text-[1rem] desktops:text-[0.8rem] my-4 flex items-center justify-center gap-2 rounded-[0.5rem] border-transparent bg-rose-100 p-2 text-[0.6rem]"

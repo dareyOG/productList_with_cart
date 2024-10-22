@@ -1,8 +1,11 @@
 import EmptyCart from './EmptyCart';
 import FilledCart from './FilledCart';
 import ConfirmOrder from './ConfirmOrder';
+import { useDessert } from "../context/DessertContext";
 
-function Cart({ cartList, dispatch, totalOrder, formatCurrency }) {
+function Cart() {
+const { cartList } = useDessert()
+
   // number of cart Items
   const numcartItems = cartList
     .map((cartItem) => cartItem.quantity)
@@ -18,16 +21,9 @@ function Cart({ cartList, dispatch, totalOrder, formatCurrency }) {
       {cartList.length ? (
         <>
            <FilledCart
-            cartList={cartList}
-            dispatch={dispatch}
-            formatCurrency={formatCurrency}
+            
           />
-          <ConfirmOrder
-            cartList={cartList}
-            dispatch={dispatch}
-            totalOrder={totalOrder}
-            formatCurrency={formatCurrency}
-          />
+          <ConfirmOrder/>
         </>
       ) : (
         <EmptyCart />

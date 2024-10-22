@@ -1,10 +1,12 @@
+import { useDessert } from "../context/DessertContext";
 import CartItem from './CartItem';
 
-function FilledCart({ cartList, dispatch,formatCurrency }) {
+function FilledCart() {
+  const { cartList }=useDessert()
   return (
     <ul>
       {cartList.map((cartItem) => (
-        <CartItem cartItem={cartItem} dispatch={dispatch} formatCurrency={formatCurrency} key={cartItem.name} />
+        <CartItem cartItem={cartItem}  key={cartItem.name} />
       ))}
     </ul>
   );

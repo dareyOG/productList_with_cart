@@ -1,10 +1,13 @@
+import { useDessert } from "../context/DessertContext";
 
-function OrderItem({orderItem, formatCurrency }) {
+function OrderItem({orderItem}) {
+  const {formatCurrency }=useDessert()
+  // destructure orderItem
   const { name, thumbnail, unitPrice, quantity } = orderItem;
 
   return (
     <li className="grid grid-cols-[auto,1fr,auto] items-center gap-[1rem] border-b border-rose-400 py-[1rem] ">
-      <img src={thumbnail} className="w-[3rem] rounded-[0.5rem] " />
+      <img src={thumbnail} alt={`${name} thumbnail`} className="w-[3rem] rounded-[0.5rem] " />
       <div className="flex w-[8.5rem] flex-col justify-between gap-1 text-[.85rem]">
         <p className="font-semibold truncate text-rose-900">{name}</p>
         <div className="flex gap-2">
