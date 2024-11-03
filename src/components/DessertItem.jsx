@@ -45,7 +45,7 @@ function DessertItem({dessert}) {
         <img
           src={dessert.image.mobile}
           alt={dessert.name}
-          className={`desktops:h-[15rem] tablets:object-cover object-contain tablets:h-[13rem] w-full cursor-pointer rounded-[0.7rem] border-[3px] ${isIncludedInCart?'border-red hover:border-transparent':'border-transparent hover:border-red'}`}
+          className={`desktops:h-[15rem] object-cover tablets:h-[13rem] w-full cursor-pointer rounded-[0.7rem] border-[3px] ${isIncludedInCart?'border-red hover:border-transparent':'border-transparent hover:border-red'}`}
         />
       </picture>
       {/* dessert counter */}
