@@ -1,6 +1,4 @@
 import { useDessert } from "../context/DessertContext";
-// import AddToCart from './AddToCart';
-// import DessertCounter from './DessertCounter';
 
 function DessertItem({dessert}) {
 
@@ -48,6 +46,7 @@ function DessertItem({dessert}) {
           className={`desktops:h-[15rem] object-cover tablets:h-[13rem] w-full cursor-pointer rounded-[0.7rem] border-[3px] ${isIncludedInCart?'border-red hover:border-transparent':'border-transparent hover:border-red'}`}
         />
       </picture>
+      
       {/* dessert counter */}
       {!isIncludedInCart ? (
        <button
@@ -74,6 +73,7 @@ function DessertItem({dessert}) {
         </button>
       </div>
       )}
+
       {/* dessert info */}
       <div role="contentinfo" className="font-semibold flex w-fit flex-col text-[1.1rem]">
         <h2 className="font-normal text-rose-400">{dessert.category}</h2>
